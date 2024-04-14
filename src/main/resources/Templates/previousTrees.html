@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Previous Trees</title>
+    <script>
+        // Function to pretty-print JSON for each tree once the page has loaded
+        window.onload = function() {
+            var jsonContainers = document.querySelectorAll('.json-structure');
+            jsonContainers.forEach(function(container) {
+                // Parse and pretty-print the JSON string
+                var json = JSON.parse(container.textContent);
+                container.textContent = JSON.stringify(json, null, 2);
+            });
+        };
+    </script>
+</head>
+<body>
+<h2>Previous Trees</h2>
+<div th:if="${trees}">
+    <ul>
+        <li th:each="tree, iterStat : ${trees}">
+            <div>Numbers: <span th:text="${tree.inputNumbers}">Numbers</span></div>
+            <!-- Unique ID for each tree's JSON container -->
+            <div>Tree Structure:
+                <pre class="json-structure" th:id="'json-' + ${iterStat.index}" th:text="${tree.treeStructure}">Tree Structure</pre>
+            </div>
+        </li>
+    </ul>
+</div>
+<div th:if="${trees == null || trees.empty}">
+    <p>No previous trees found.</p>
+</div>
+<a href="/enter-numbers">Back</a>
+</body>
+</html>

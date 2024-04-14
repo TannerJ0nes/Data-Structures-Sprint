@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enter Numbers</title>
+</head>
+<body>
+<h2>Enter a series of numbers</h2>
+<form action="/process-numbers" method="post">
+    <input type="text" name="numbers" placeholder="Enter numbers separated by commas"/>
+    <button type="submit">Submit</button>
+</form>
+<br>
+<a href="/previous-trees">Show Previous Trees</a>
+</body>
+</html>

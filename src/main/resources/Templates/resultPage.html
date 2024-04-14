@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tree Result</title>
+    <script>
+        // This function will run once the page DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve the JSON string from a hidden div
+            var jsonString = document.getElementById('jsonString').textContent;
+            // Parse the JSON string into an object
+            var json = JSON.parse(jsonString);
+            // Convert the object back into a pretty-printed JSON string
+            var prettyJson = JSON.stringify(json, null, 2);
+            // Display the pretty-printed JSON string in the <pre> element
+            document.getElementById('prettyJson').textContent = prettyJson;
+        });
+    </script>
+</head>
+<body>
+<h2>Binary Search Tree (JSON)</h2>
+
+<div id="jsonString" style="display: none;" th:text="${jsonBST}"></div>
+
+<pre id="prettyJson">JSON representation of the BST will appear here.</pre>
+<a href="/enter-numbers">Create Another Tree</a>
+</body>
+</html>
